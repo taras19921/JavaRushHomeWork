@@ -14,14 +14,38 @@ public class Tasks
     {
         //fibonacci(8);
         //fibonacci3Number(8);
-        //factorial(7);
+        factorial(7);
         //sortArray();
-        reverseNumber();
+        //reverseNumber();
+        //naturalNumber(10);
+        //System.out.println();
+        //naturalNumber1(10);
 
+    }
+    // Natural number
+    public static void naturalNumber(int n)
+    {
+        ArrayList<Integer> natural = new ArrayList<>();
+
+        int i = 1;
+        for (; natural.size() < n;)
+        {
+            for (int j = 2; j < i; j++)
+            {
+                if ((i % j == 0))
+                {
+                    i++;
+                    continue;
+                }
+            }
+            natural.add(i);
+            i++;
+        }
+        System.out.println(natural);
     }
 
     // Natural number
-    public static void naturalNumber(int n)
+    public static void naturalNumber1(int n)
     {
         ArrayList<Integer> natural = new ArrayList<>();
         int i = 1;
@@ -39,15 +63,15 @@ public class Tasks
             i++;
         } while (natural.size() < n);
         System.out.println(natural);
-
     }
+
 
     // reverseNumber
     public static void reverseNumber() throws IOException
     {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         //Integer a = Integer.parseInt(br.readLine());
-        StringBuilder s = new StringBuilder(br.readLine());
+        StringBuffer s = new StringBuffer(br.readLine());
         System.out.println(s);
         s.reverse();
         System.out.println(s);
