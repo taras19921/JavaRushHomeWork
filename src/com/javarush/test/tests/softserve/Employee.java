@@ -74,6 +74,10 @@ public class Employee
             this.bonus = bonus;
         }
 
+        public void setBonus(double bonus)
+        {
+            this.bonus = bonus;
+        }
 
         @Override
         public double getSalary()
