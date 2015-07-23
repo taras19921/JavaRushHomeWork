@@ -1,18 +1,15 @@
 package com.javarush.test.tests.softserve;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 /**
  * Created by Тарас on 03.06.2015.
  */
-public class Employee
+
+public class Employee implements Serializable
 {
     private String name;
-    private double salary;
     private double experience;
     private double rate;
 
@@ -40,18 +37,13 @@ public class Employee
 
     public double getSalary()
     {
-        salary = experience * rate;
+        double salary = experience * rate;
         return salary;
     }
 
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    public void setSalary(double salary)
-    {
-        this.salary = salary;
     }
 
     public void setExperience(double experience)
@@ -94,6 +86,10 @@ public class Employee
         employees.add(new Employee("B", 4, 5));
         employees.add(new Employee("A", 2, 3));
         employees.add(new Employee("A", 5, 8));
+        employees.add(new Employee("M", 5, 8));
+        employees.add(new Employee("O", 1, 2));
+        employees.add(new Employee("R", 3, 15));
+        employees.add(new Employee("K", 5, 8));
 
         // список зарплат
         for (Employee e : employees)
@@ -101,37 +97,64 @@ public class Employee
             getSalaryEmployee.add(e.getSalary());
         }
 
-        Double arraySalary[] = new Double[getSalaryEmployee.size()];
-        arraySalary = getSalaryEmployee.toArray(arraySalary);
+        //Масив відсортрованих зарплат
+        Double sortSalary[] = new Double[getSalaryEmployee.size()];
+        sortSalary = getSalaryEmployee.toArray(sortSalary);
 
-        // сортування зарплат max to min
-        for(int i = 0; i <  arraySalary.length; i++)
+        // сортування зарплат min to max
+        for(int i = 0; i < sortSalary.length; i++)
         {
-            for(int j = i + 1; j < arraySalary.length; j++)
+            for(int j = i + 1; j < sortSalary.length; j++)
             {
-                if (arraySalary[i] < arraySalary[j])
+                if (sortSalary[j] < sortSalary[i])
                 {
-                    double min = arraySalary[i];
-                    arraySalary[i] = arraySalary[j];
-                    arraySalary[j]  = min;
+                    double max = sortSalary[i];
+                    sortSalary[i] = sortSalary[j];
+                    sortSalary[j]  = max;
                 }
             }
         }
 
-        System.out.println(getSalaryEmployee);
-
-        for(int i = 0; i <  arraySalary.length; i++)
-        {
-            System.out.print(arraySalary[i] + " ");
-        }
+        //Колекція відсортрованих зарплат
+        ArrayList<Double> sortList = new ArrayList(Arrays.asList(sortSalary));
+            for(int i = 0; i < sortList.size(); i++)
+            {
+                for(int j = i + 1; j < sortList.size(); j++)
+                {
+                    //Пошук однакових зарплат
+                    if (sortList.get(i).doubleValue() == sortList.get(j).doubleValue())
+                    {
+                        for (Employee e : employees)
+                        {
+                            if (e.getSalary() == sortList.get(i).doubleValue()) {
+                                System.out.print(e.getName() + " ");
+                            }
+                        }
+                        // видалення однакових зарплат
+                        double sameSalary = sortList.get(i).doubleValue();
+                        for(int k = 0; k < sortList.size(); k++)
+                        {
+                            if (sortList.get(k).doubleValue() == sameSalary)
+                            {
+                                sortList.remove(sortList.get(k));
+                                k--;
+                            }
+                        }
+                    }
+                    continue;
+                }
+                System.out.print(sortList.get(i) + " ");
+            }
 
         // Серіалізація масиву
-            try (ObjectOutputStream objOStream =
-                          new ObjectOutputStream(new FileOutputStream("serial")))
+        //В программе создается объект класса FileOutputStream, который ссылается
+        //на файл по имени "serial", и для этого файлового потока создается объект класса ObjectOutputStream.
+        //Класс ObjectOutputStream отвечает за запись объектов из потока
+            try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("serial")))
             {
-                objOStream.writeObject(arraySalary);
-                FileOutputStream f = new FileOutputStream("filel.txt");
-                //f.write(objOStream.);
+                //Метод writeObject () используется для сериализации объекта
+                outputStream.writeObject(sortList);
+
             } catch (FileNotFoundException e)
             {
                 e.printStackTrace();
@@ -139,18 +162,40 @@ public class Employee
             {
                 e.printStackTrace();
             }
+        System.out.println();
 
-
-
-        try
+        // Десериализация объекта
+        //Класс ObjectInputStream отвечает за чтение объектов из потока
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("serial")))
         {
-            FileOutputStream f = new FileOutputStream("filel.txt");
+            ArrayList<Double> readList = (ArrayList<Double>)inputStream.readObject();
+                System.out.println("Після десереалізації " + readList);
         }
         catch (FileNotFoundException e)
         {
             e.printStackTrace();
         }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
 
+
+        /*
+        //Колекція зарплат
+        System.out.println(getSalaryEmployee);
+
+        //Колекція відсортованих зарплат
+        for(int i = 0; i < sortSalary.length; i++)
+        {
+            System.out.print(sortSalary[i] + " ");
+        }
+
+        System.out.println();
+        */
     }
-
 }
