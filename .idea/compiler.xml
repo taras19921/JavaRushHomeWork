@@ -20,5 +20,8 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="JavaRushHomeWork" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

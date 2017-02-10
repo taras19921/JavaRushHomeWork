@@ -1,5 +1,7 @@
 package com.javarush.test.volpis;
 
+import java.util.Date;
+
 /**
  * Created by Тарас on 27.10.2015.
  */
@@ -8,7 +10,70 @@ public class DeleteTimeLocation
     public static void main(String[] args) throws InterruptedException
     {
 
-        String content = "Belgium has raised its terrorism alert to its highest level." +
+        /***** Checking days from creation ads *******/
+
+        Date dateOfCreationAd = new Date();
+        System.out.println("Date of creation ad: " + dateOfCreationAd);
+        long createAdsMillisecond = dateOfCreationAd.getTime();
+        Thread.sleep(10000);
+        Date currentDate = new Date();
+        System.out.println("Current Date: " + currentDate);
+        long currentTimeMillisecond = currentDate.getTime();
+        /*long adsDaysCount = createAdsMillisecond / 1000 *//*sec*//*;
+        System.out.println("adsDaysCount: " + adsDaysCount);*/
+        int adminDaysToStop = 8;
+        int adminDaysToDelete = 5;
+        long adsDaysCount = (currentTimeMillisecond - createAdsMillisecond) / 1000/*sec*/;
+        System.out.println("adsDaysCount: " + adsDaysCount);
+        System.out.println("adminDaysToStop: " + adminDaysToStop);
+        boolean isActive = true;
+        System.out.println();
+
+        if (adsDaysCount > adminDaysToStop)
+        {
+            System.out.println("set not active");
+            isActive = false;
+            Date dateOfStopAds = new Date();
+            long stopAdsMillisecond = dateOfStopAds.getTime();
+
+            /***** Checking days from stopping ads *******/
+
+            Thread.sleep(10000);
+
+            if (dateOfStopAds != null)
+            {
+                Date currentDate1 = new Date();
+                long currentTime1Millisecond = currentDate1.getTime();
+
+                long daysFromAdsStopCount = (currentTime1Millisecond - stopAdsMillisecond) / 1000/*sec*/;
+                System.out.println("daysFromAdsStopCount: " + daysFromAdsStopCount);
+                System.out.println("adminDaysToDelete: " + adminDaysToDelete);
+
+                if (daysFromAdsStopCount > adminDaysToDelete)
+                {
+                    System.out.println("Delete Ad!");
+                }
+
+            }
+        } else
+        {
+            System.out.println("continue");
+        }
+
+        /*Date dateOfStopAd = new Date();
+        System.out.println("Date of stopping ad: " + dateOfStopAd);
+        long adsDaysCount = dateOfStopAd.getTime();
+        System.out.println("stopAdsMillisecond: " + adsDaysCount);
+        long timeFromCreatingAdsSec = (adsDaysCount - createAdsMillisecond) / 1000*//*sec*//*;
+        System.out.println("timeFromCreatingSec: " + timeFromCreatingAdsSec);
+        int stopAdsSec = 8;*/
+
+
+//        double timeFinishMilisec = (double) (stopTimeMilisec - startTimeMilisec) / 60;
+
+        //************* Replace spaces ********************/
+
+        /*String content = "Belgium has raised its terrorism alert to its highest level." +
                 " Three days of national mourning have been declared." +
                 "\\n\\nPrime Minister Charles Michel called the latest attacks" +
                 " \"blind, violent and cowardly\", adding: \"This is a day of tragedy, a black day..." +
@@ -22,7 +87,7 @@ public class DeleteTimeLocation
         System.out.println(content);
         System.out.println(content.replaceAll("\\\\n\\\\n", "\n\t"));
 
-
+           //************* Folder ********************/
 
         /*File folder = new File("D:\\New");
         if (folder.isDirectory()) {
@@ -42,6 +107,9 @@ public class DeleteTimeLocation
         {
             e.printStackTrace();
         }*/
+
+        //************* Timer ********************//
+
         //Date date = new Date();
         //System.out.println(date.getTime());
         /*

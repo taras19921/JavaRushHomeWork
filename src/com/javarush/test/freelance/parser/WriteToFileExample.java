@@ -1,4 +1,4 @@
-package com.javarush.test.volpis.parser;
+package com.javarush.test.freelance.parser;
 
 public class WriteToFileExample
 {

@@ -1,4 +1,4 @@
-package com.javarush.test.volpis.parser;
+package com.javarush.test.freelance.parser;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;

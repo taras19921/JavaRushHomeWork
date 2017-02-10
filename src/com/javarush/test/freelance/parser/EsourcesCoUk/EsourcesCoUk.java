@@ -1,4 +1,4 @@
-package com.javarush.test.volpis.parser;
+package com.javarush.test.freelance.parser.EsourcesCoUk;
 
 import au.com.bytecode.opencsv.CSVWriter;
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,7 +16,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParserEsourcesCoUk
+public class EsourcesCoUk
 {
 
     public static void main(String[] args)
@@ -46,7 +46,33 @@ public class ParserEsourcesCoUk
         // Food & Beverages
 //        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/11/");
         // Gifts & Giftware
-        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/12/");
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/12/");
+        // Health & Beauty
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/13/");
+        // Home Supplies
+        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/14/");
+        // Industrial & Materials
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/1080/");
+        // Jewellery & Watches
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/15/");
+        // Promotional Merchandise
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/16/");
+        // Publishing & Print
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/17/");
+        // Security & Protection
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/18/");
+        // Sports & Leisure
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/19/");
+        // Surplus & Stocklots
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/20/");
+        // Telecom & Mobiles
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/21/");
+        // Textiles & Fabrics
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/22/");
+        // Toys & Games
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/23/");
+        // Travel & Outdoors
+//        List<String> pages = pages("http://www.esources.co.uk/wholesale-suppliers/24/");
         List<String> allPages = allPages(pages);
         /*List<String> list = new ArrayList<>();
         list.add(*//*"http://www.esources.co.uk/supplier/25035/436/"*//*"http://www.esources.co.uk/supplier/16945/");*/
@@ -63,21 +89,21 @@ public class ParserEsourcesCoUk
         try
         {
             // Apparel & Clothing
-//            for (int i = 0; i <= 298; i++)
+//            for (int i = 0; i <= 300; i++)
             // Arts & Crafts
 //            for (int i = 0; i <= 81; i++)
             // Automotive & Transport
-//            for (int i = 0; i <= 69; i++)
+//            for (int i = 0; i <= 71; i++)
             // Business Services
 //            for (int i = 0; i <= 106; i++)
             // Business Suppliers
-//            for (int i = 0; i <= 120; i++)
+//            for (int i = 0; i <= 121; i++)
             // Computer & Software
-//            for (int i = 0; i <= 92; i++)
+//            for (int i = 0; i <= 93; i++)
             // Construction & DIY
 //            for (int i = 0; i <= 136; i++)
             // Dropshippers & Dropshipping
-//            for (int i = 0; i <= 59; i++)
+//            for (int i = 0; i <= 57; i++)
             // Electrical & Lighting
 //            for (int i = 0; i <= 123; i++)
             // Electronics & Photo
@@ -87,8 +113,33 @@ public class ParserEsourcesCoUk
             // Food & Beverages
 //            for (int i = 0; i <= 261; i++)
             // Gifts & Giftware
-            for (int i = 0; i <= 153; i++)
-            //for (int i = 0; i < 10; i++)
+//            for (int i = 0; i <= 6; i++)
+            // Health & Beauty
+//            for (int i = 0; i <= 175; i++)
+            // Home Supplies
+            for (int i = 0; i <= 8/*350*/; i++)
+            // Industrial & Materials
+//            for (int i = 0; i <= 137; i++)
+            // Jewellery & Watches
+//            for (int i = 0; i <= 120; i++)
+            // Promotional Merchandise
+//            for (int i = 0; i <= 53; i++)
+            // Publishing & Print
+//            for (int i = 0; i <= 152; i++)
+            // Security & Protection
+//            for (int i = 0; i <= 44; i++)
+            // Sports & Leisure
+//            for (int i = 0; i <= 102; i++)
+//            for (int i = 0; i <= 115; i++)
+            // Telecom & Mobiles
+//            for (int i = 0; i <= 32; i++)
+            // Textiles & Fabrics
+//            for (int i = 0; i <= 48; i++)
+            // Toys & Games
+//            for (int i = 0; i <= 81; i++)
+            // Travel & Outdoors
+//            for (int i = 0; i <= 67; i++)
+//            for (int i = 0; i < 1; i++)
             {
                 page = Jsoup.connect(link).timeout(0/*10 * 1000*/).parser(Parser.htmlParser()).get();
                 Element results = page.getElementById("results");
@@ -124,7 +175,6 @@ public class ParserEsourcesCoUk
                     String link = href.attr("href");
                     allPages.add(link);
                 }
-                //}
             }
         }
         catch (IOException e)
@@ -269,9 +319,9 @@ public class ParserEsourcesCoUk
         FileInputStream file = null;
         try
         {
-//            FileInputStream file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Apparel & Clothing.xlsx"));
-//            FileInputStream file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Arts & Crafts.xlsx"));
-//            FileInputStream file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Automotive & Transport.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Apparel & Clothing.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Arts & Crafts.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Automotive & Transport.xlsx"));
 //            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Business Services.xlsx"));
 //            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Business Supplies.xlsx"));
 //            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Computer & Software.xlsx"));
@@ -281,7 +331,20 @@ public class ParserEsourcesCoUk
 //            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Electronics & Photo.xlsx"));
 //            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Floral & Garden.xlsx"));
 //            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Food & Beverages.xlsx"));
-            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Gifts & Giftware.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Gifts & Giftware.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Health & Beauty.xlsx"));
+            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Home Supplies.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Industrial & Materials.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Jewellery & Watches.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Promotional Merchandise.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Publishing & Print.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Security & Protection.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Sports & Leisure.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Surplus & Stocklots.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Telecom & Mobiles.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Textiles & Fabrics.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Toys & Games.xlsx"));
+//            file = new FileInputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Travel & Outdoors.xlsx"));
             workbook = new XSSFWorkbook(file);
             Sheet sheet = workbook.getSheetAt(0);
             Document document;
@@ -289,6 +352,8 @@ public class ParserEsourcesCoUk
             for (int page = 0; page < allPages.size(); page++)
             {
                 System.out.println();
+
+                System.out.println("page: " + page + 1);
                 System.out.println(allPages.get(page));
 
                 String category = "";
@@ -298,6 +363,7 @@ public class ParserEsourcesCoUk
                 String products = "";
                 String profile = "";
                 String city = "";
+                String imageURL = "";
                 String businessType = "";
                 String contactPerson = "";
                 String address = "";
@@ -320,19 +386,27 @@ public class ParserEsourcesCoUk
                     else if (j == 4)
                         subSubCategory = breadcrumb3.get(j).text();
                 }
-                System.out.println("category: " + category);
-                System.out.println("subCategory: " + subCategory);
-                System.out.println("subSubCategory: " + subSubCategory);
+                if (category.equals("Home Supplies"))
+                {
+                    System.out.println("category: " + category);
+                    System.out.println("subCategory: " + subCategory);
+                    System.out.println("subSubCategory: " + subSubCategory);
 
-                // business name
-                businessName = document.getElementById("pcompanyname").text();
-                System.out.println("businessName: " + businessName);
+                    // business name
+                    businessName = document.getElementById("pcompanyname").text();
+                    System.out.println("businessName: " + businessName);
 
-                // city
-                city = document.getElementsByClass("plocation").text().replace("[", "").replace("]", "").replaceAll(" ", "");
-                System.out.println("city: " + city);
+                    // city
+                    city = document.getElementsByClass("plocation").text().replace("[", "").replace("]", "").replaceAll(" ", "");
+                    System.out.println("city: " + city);
 
-                // business type
+                    if (document.getElementById("supplierlogo") != null)
+                    {
+                        imageURL = document.getElementById("supplierlogo").attr("src");
+                        System.out.println("imageURL: " + imageURL);
+                    }
+
+                /*// business type
                 businessType = document.getElementsByClass("normal").text().split(" ")[0];
                 System.out.println("businessType: " + businessType);
 
@@ -344,7 +418,6 @@ public class ParserEsourcesCoUk
                 {
 
                     Element table1 = tables.get(table); //select table.
-                    Element row = table1.select("tr").first(); //select first tr.
                     String businessTypeValue = table1.select("tr").first().text();
                     String companyValue = table1.select("tr").first().text();
                     if (businessTypeValue.contains("Business"))
@@ -506,15 +579,15 @@ public class ParserEsourcesCoUk
                             }
                         }
                     }
-                }
-                //iterating r number of rows
+                }*/
+                    //iterating r number of rows
 
-                //Create a new row in current sheet
-                Row row = sheet.createRow(page + 1);
+                    //Create a new row in current sheet
+                    Row row = sheet.createRow(page + 1);
 //Create a new cell in current row
-                Cell cell = row.createCell(0);
 //Set value to new value
-                cell.setCellValue(category);
+                    Cell cell = row.createCell(0);
+                /*cell.setCellValue(category);
                 cell = row.createCell(1);
                 cell.setCellValue(subCategory);
                 cell = row.createCell(2);
@@ -538,8 +611,10 @@ public class ParserEsourcesCoUk
                 cell = row.createCell(11);
                 cell.setCellValue(telephone);
                 cell = row.createCell(12);
-                cell.setCellValue(mobile);
-
+                cell.setCellValue(mobile);*/
+                    cell = row.createCell(13);
+                    cell.setCellValue(imageURL);
+                }
             }
         }
         catch (FileNotFoundException e)
@@ -561,13 +636,27 @@ public class ParserEsourcesCoUk
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Automotive & Transport.xlsx"));
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Business Services.xlsx"));
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Business Supplies.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Computer & Software.xlsx"));
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Construction & DIY.xlsx"));
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Dropshippers & Dropshipping.xlsx"));
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Electrical & Lighting.xlsx"));
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Electronics & Photo.xlsx"));
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Floral & Garden.xlsx"));
 //                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Food & Beverages.xlsx"));
-                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Gifts & Giftware.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Gifts & Giftware.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Health & Beauty.xlsx"));
+                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Home Supplies.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Industrial & Materials.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Jewellery & Watches.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Promotional Merchandise.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Publishing & Print.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Security & Protection.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Sports & Leisure.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Surplus & Stocklots.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Telecom & Mobiles.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Textiles & Fabrics.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Toys & Games.xlsx"));
+//                outFile = new FileOutputStream(new File("D:\\Freelance\\Lowcostseo\\UK\\WS UK - Travel & Outdoors.xlsx"));
                 workbook.write(outFile);
                 outFile.close();
             }
